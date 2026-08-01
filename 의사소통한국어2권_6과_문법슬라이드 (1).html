@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>의사소통 한국어 2권 6과 문법을 배워요</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="의사소통 한국어 2권 6과 문법을 배워요">
+<meta property="og:description" content="탭으로 배우는 인터랙티브 한국어 문법 슬라이드">
+<meta property="og:image" content="https://sbaefr-lang.github.io/KSL-Grammar-V2/og-2kwon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="의사소통 한국어 2권 6과 문법을 배워요">
+<meta name="twitter:image" content="https://sbaefr-lang.github.io/KSL-Grammar-V2/og-2kwon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4f9fd;
+    --cream2:#eaf4fc;
+    --orange:#4fa3dd;
+    --orange-dark:#1f6fa8;
+    --coral:#6bb8e6;
+    --mustard:#3a8fce;
+    --ink:#2c3438;
+    --line:#d6e8f5;
+    --blue-bubble:#e3f2fd;
+    --blue-bubble-border:#bfe0f5;
+    --apricot-bubble:#f2e9ff;
+    --apricot-bubble-border:#ddc7fa;
+    --highlight:#fff176;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Gothic A1',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .app{
+    max-width:900px;
+    margin:0 auto;
+    padding:14px 14px 40px;
+  }
+  .page-title{
+    text-align:center;
+    font-size:15px;
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:0.3px;
+    padding:8px 0 14px;
+  }
+  /* 책갈피 스타일 상단 탭 */
+  .grammar-tabs{
+    display:flex;
+    width:100%;
+  }
+  .grammar-tab{
+    flex:1;
+    text-align:center;
+    padding:14px 4px 12px;
+    font-family:'Jua',sans-serif;
+    font-size:clamp(13px,3.2vw,18px);
+    background:var(--orange-dark);
+    color:#fff;
+    border:2px solid var(--orange-dark);
+    border-bottom:none;
+    cursor:pointer;
+    position:relative;
+    transition:background .2s, color .2s;
+    border-radius:14px 14px 0 0;
+    margin-right:-2px;
+  }
+  .grammar-tab:last-child{margin-right:0;}
+  .grammar-tab.active{
+    background:#e8f4fc;
+    color:var(--orange-dark);
+    border-color:var(--orange-dark);
+    z-index:2;
+  }
+  .grammar-tab:not(.active):hover{
+    background:#2f7ab8;
+  }
+
+  .panel{
+    background:#fff;
+    border:2px solid var(--line);
+    border-radius:0 0 18px 18px;
+    padding:20px 18px 18px;
+    box-shadow:0 6px 18px rgba(180,130,50,0.10);
+  }
+
+  .progress{
+    text-align:center;
+    font-size:13px;
+    color:#b58650;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+
+  /* 단계 하위 탭 */
+  .step-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  .step-tab{
+    padding:8px 16px;
+    border-radius:20px;
+    background:#fff;
+    border:1.5px solid var(--line);
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .step-tab.active{
+    background:#2b241c;
+    color:#fff;
+    border-color:#2b241c;
+  }
+
+  .step-content{
+    min-height:260px;
+    animation:fadeIn .25s ease;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .step-title{
+    font-family:'Jua',sans-serif;
+    font-size:19px;
+    color:var(--orange-dark);
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .step-title .num{
+    background:var(--orange);
+    color:#fff;
+    width:26px;height:26px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+  }
+
+  .target-label{
+    font-family:'Jua',sans-serif;
+    color:var(--orange-dark);
+  }
+
+  /* 상황 도입 */
+  .scene{
+    display:flex;
+    gap:14px;
+    align-items:flex-end;
+    justify-content:center;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+  }
+  .illust{
+    width:74px;height:74px;
+    border-radius:50%;
+    background:var(--cream2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:34px;
+    border:2px solid var(--line);
+    flex:0 0 auto;
+  }
+  .dialogue{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .bubble-row{display:flex;gap:10px;align-items:flex-start;}
+  .bubble-row.nana{justify-content:flex-end;}
+  .bubble{
+    max-width:78%;
+    padding:10px 14px;
+    border-radius:16px;
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--ink);
+    border:2px solid transparent;
+  }
+  .bubble.ga{
+    background:var(--blue-bubble);
+    border-color:var(--blue-bubble-border);
+    border-bottom-left-radius:4px;
+  }
+  .bubble.na{
+    background:var(--apricot-bubble);
+    border-color:var(--apricot-bubble-border);
+    border-bottom-right-radius:4px;
+  }
+  .who{
+    font-size:11px;
+    font-weight:700;
+    color:#a98a55;
+    margin-bottom:3px;
+  }
+  mark.hl{
+    background:linear-gradient(180deg,transparent 55%, var(--highlight) 55%);
+    font-weight:900;
+    padding:0 2px;
+  }
+  .hint-box{
+    margin-top:18px;
+    background:#fff;
+    border:2px solid var(--orange);
+    border-radius:40px;
+    padding:14px 20px;
+    font-size:14.5px;
+    color:var(--ink);
+    font-weight:700;
+    text-align:center;
+  }
+  .hint-box .target-label{
+    display:inline-block;
+    background:var(--mustard);
+    color:#fff;
+    padding:3px 10px;
+    border-radius:8px;
+    font-family:'Jua',sans-serif;
+    font-weight:400;
+  }
+
+  /* 의미 */
+  .meaning-boxes{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .meaning-box{
+    flex:1 1 220px;
+    background:#fff;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:16px;
+  }
+  .meaning-box .tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    color:var(--orange-dark);
+    background:#d9ecfa;
+    padding:4px 12px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .meaning-box p{margin:0;font-size:15px;line-height:1.6;color:var(--ink);}
+  .meaning-box .sub{margin-top:6px;font-size:12.5px;color:#7a8a97;}
+  .target-word{color:var(--orange-dark);font-weight:900;}
+  .summary-line{
+    background:#e3f2fd;
+    border-radius:14px;
+    padding:12px 16px;
+    font-weight:700;
+    font-size:14.5px;
+    color:var(--ink);
+    text-align:center;
+  }
+
+  /* 형태 표 */
+  table.form-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:14px;
+    font-size:14px;
+  }
+  table.form-table th, table.form-table td{
+    border:1.5px solid var(--line);
+    padding:10px;
+    text-align:center;
+  }
+  table.form-table th{
+    background:var(--orange);
+    color:#fff;
+    font-weight:700;
+  }
+  table.form-table td.formcol{
+    font-weight:900;
+    color:var(--ink);
+  }
+  .red{color:#e0342c;font-weight:900;}
+
+  /* 연습 문제 */
+  .hint-bar{
+    background:#dcedfa;
+    color:var(--orange-dark);
+    border-radius:14px;
+    padding:12px 16px;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:16px;
+  }
+  .practice-list{display:flex;flex-direction:column;gap:12px;margin-bottom:14px;}
+  .practice-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    background:#fff;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:14px 18px;
+    cursor:pointer;
+  }
+  .practice-item .q{font-weight:700;font-size:15px;color:var(--ink);}
+  .practice-item .reveal-btn{
+    background:var(--orange);
+    color:#fff;
+    border:none;
+    padding:9px 18px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:13.5px;
+    white-space:nowrap;
+    font-family:'Gothic A1',sans-serif;
+  }
+  .practice-item.revealed .reveal-btn{
+    background:#e3f2fd;
+    color:var(--orange-dark);
+  }
+  .practice-item:active{transform:scale(0.985);}
+  .grammar-tab:active, .step-tab:active, .nav-btn:active, .reset-btn:active{opacity:0.85;}
+
+  .example-box{
+    background:#dcedfa;
+    border:none;
+    border-radius:16px;
+    padding:16px 18px;
+    margin-bottom:14px;
+  }
+  .example-box .tag-label{
+    display:inline-block;
+    background:#fff;
+    color:var(--orange-dark);
+    padding:4px 14px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .example-box .lines{font-size:14.5px;color:var(--ink);line-height:1.7;}
+
+  .reset-btn{
+    display:inline-block;
+    background:#fff;
+    color:var(--ink);
+    border:2px solid var(--ink);
+    padding:8px 18px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:13px;
+    cursor:pointer;
+    font-family:'Gothic A1',sans-serif;
+  }
+  .reset-btn:hover{background:#eef6fb;}
+
+  /* 주의점 */
+  .warning-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  .warning-list li{
+    background:#f7fbfe;
+    border:1.5px solid var(--line);
+    border-radius:14px;
+    padding:14px 18px;
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+
+  /* 비교 */
+  .compare-wrap{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  .compare-box{
+    flex:1 1 220px;
+    border-radius:12px;
+    padding:14px;
+    border:2px solid var(--line);
+  }
+  .compare-box.a{background:#eaf6ff;border-color:#bfe3fa;}
+  .compare-box.b{background:#f5ecff;border-color:#ddc7fa;}
+  .compare-box h4{margin:0 0 8px;font-family:'Jua',sans-serif;color:var(--orange-dark);}
+  .compare-box p{margin:0;font-size:14px;line-height:1.6;}
+
+  /* 하단 네비 */
+  .nav-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    gap:10px;
+  }
+  .nav-btn{
+    background:#fff;
+    color:var(--ink);
+    border:1.5px solid var(--line);
+    padding:9px 18px;
+    border-radius:24px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    font-family:'Gothic A1',sans-serif;
+  }
+  .nav-btn:hover{border-color:var(--ink);}
+  .nav-btn:disabled{opacity:0.35;cursor:default;}
+  .nav-mid{font-size:12.5px;color:#b58650;font-weight:700;}
+
+  .table-scroll{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    margin-bottom:14px;
+  }
+  .table-scroll table{margin-bottom:0;min-width:420px;}
+
+  @media (max-width:600px){
+    html{-webkit-text-size-adjust:100%;}
+    .app{padding:10px 8px 30px;}
+    .page-title{font-size:13px;padding:6px 0 12px;}
+
+    .grammar-tabs{
+      overflow-x:auto;
+      flex-wrap:nowrap;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+    }
+    .grammar-tabs::-webkit-scrollbar{display:none;}
+    .grammar-tab{
+      flex:0 0 auto;
+      min-width:118px;
+      font-size:13px;
+      padding:12px 12px 10px;
+      white-space:nowrap;
+    }
+
+    .panel{padding:16px 12px 16px;}
+
+    .step-tabs{
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      justify-content:flex-start;
+      padding-bottom:6px;
+      margin-bottom:16px;
+      scrollbar-width:none;
+    }
+    .step-tabs::-webkit-scrollbar{display:none;}
+    .step-tab{
+      flex:0 0 auto;
+      font-size:12.5px;
+      padding:9px 14px;
+    }
+
+    .step-title{font-size:17px;}
+
+    .scene{gap:10px;}
+    .illust{width:58px;height:58px;font-size:26px;}
+    .bubble{font-size:14.5px;max-width:86%;padding:10px 13px;line-height:1.6;}
+    .hint-box{font-size:14px;padding:12px 14px;border-radius:22px;}
+
+    .meaning-boxes{flex-direction:column;}
+    .meaning-box p{font-size:15px;}
+    .summary-line{font-size:14px;}
+
+    table.form-table{font-size:13px;}
+    table.form-table th, table.form-table td{padding:8px 6px;}
+
+    .practice-item{
+      flex-direction:column;
+      align-items:stretch;
+      gap:10px;
+      padding:14px;
+    }
+    .practice-item .q{font-size:15px;}
+    .practice-item .reveal-btn{
+      width:100%;
+      text-align:center;
+      padding:12px;
+      font-size:14px;
+    }
+    .example-box{padding:14px 14px;}
+
+    .warning-list li{font-size:14.5px;padding:12px 14px;}
+
+    .compare-wrap{flex-direction:column;}
+
+    .reset-btn{width:100%;text-align:center;padding:12px;}
+
+    .nav-bar{
+      flex-wrap:wrap;
+    }
+    .nav-btn{
+      flex:1 1 auto;
+      padding:13px 14px;
+      font-size:14px;
+      min-height:46px;
+    }
+    .nav-mid{
+      order:3;
+      width:100%;
+      text-align:center;
+      font-size:11.5px;
+      margin-top:2px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="page-title">의사소통 한국어 2권 6과 문법을 배워요</div>
+  <div class="grammar-tabs" id="grammarTabs"></div>
+  <div class="panel">
+    <div class="progress" id="progress"></div>
+    <div class="step-tabs" id="stepTabs"></div>
+    <div class="step-content" id="stepContent"></div>
+    <div class="nav-bar">
+      <button class="nav-btn" id="prevBtn">← 이전</button>
+      <span class="nav-mid" id="navMid"></span>
+      <button class="nav-btn" id="nextBtn">다음 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STEP_NAMES = ["상황 도입","의미","형태","형태 연습","문장 연습","사용 시 주의점","비교 문법"];
+
+const grammars = [
+{
+  id:0,
+  label:"①A/V-기 때문에",
+  title:"A/V-기 때문에",
+  scene:{
+    emoji:"🏡",
+    lines:[
+      {who:"ga", speaker:"친구", text:"우리 가족은 이번 설 연휴에 여행을 갈 거야. 넌 뭐 할 거야?"},
+      {who:"na", speaker:"친구", text:"나는 시골에 가."},
+      {who:"ga", speaker:"친구", text:"시골에는 왜 가?"},
+      {who:"na", speaker:"친구", text:"할아버지가 시골에 <mark class='hl'>계시기 때문에</mark> 할아버지 댁에 가."}
+    ],
+    hint:"A/V-기 때문에"
+  },
+  meaning:{
+    textbook:"할머니 생신 선물을 사야 하<span class='target-word'>기 때문에</span> 돈을 모으고 있어.",
+    daily:"저는 감기에 걸렸<span class='target-word'>기 때문에</span> 오늘 학교에 못 갔어요.",
+    summary:"'-기 때문에'는 앞의 내용이 뒤에 오는 일의 원인이나 이유임을 나타내는 표현이에요."
+  },
+  formTable:{
+    headers:["조건","형태","예시"],
+    rows:[
+      ["받침 O / X 상관없음", "-기 때문에", "계시다 → 계시<span class='red'>기 때문에</span>"]
+    ]
+  },
+  formPractice:[
+    {q:"많다", a:"많기 때문에"},
+    {q:"좋다", a:"좋기 때문에"},
+    {q:"아프다", a:"아프기 때문에"},
+    {q:"바쁘다", a:"바쁘기 때문에"},
+    {q:"친하다", a:"친하기 때문에"}
+  ],
+  sentenceExample:{
+    lines:["숙제가 많기 때문에 오늘은 게임을 안 할 거야. (숙제가 많다)"]
+  },
+  sentencePractice:[
+    {q:"와니랑 나는, 친하다, 비밀이 없어", a:"와니랑 나는 친하기 때문에 비밀이 없어."},
+    {q:"비가 오다, 자전거를 타면 안 돼요", a:"비가 오기 때문에 자전거를 타면 안 돼요."},
+    {q:"몸이 아프다, 병원에 가야 해요", a:"몸이 아프기 때문에 병원에 가야 해요."},
+    {q:"시간이 없다, 빨리 가야 해요", a:"시간이 없기 때문에 빨리 가야 해요."},
+    {q:"날씨가 춥다, 옷을 많이 입었어요", a:"날씨가 춥기 때문에 옷을 많이 입었어요."}
+  ],
+  warnings:[
+    "⚠️ 받침 유무와 상관없이 항상 같은 형태 '-기 때문에'를 써요.",
+    "⚠️ 원인이나 이유를 나타내며, 뒤 문장에는 명령형이나 청유형을 쓰지 않아요.",
+    "⚠️ 명사 뒤에는 '때문에'만 붙여요. (예: 비 때문에, 감기 때문에)"
+  ],
+  compare:{
+    a:{title:"-으니까 (이유)", text:"뒤에 명령·청유문을 쓸 수 있어요. 예: 비가 오니까 우산을 쓰세요."},
+    b:{title:"-기 때문에 (이유)", text:"뒤에 명령·청유문을 쓸 수 없어요. 예: 비가 오기 때문에 우산을 써요."}
+  }
+},
+{
+  id:1,
+  label:"②A/V-는 것 같다",
+  title:"A/V-는 것 같다",
+  scene:{
+    emoji:"🌷",
+    lines:[
+      {who:"ga", speaker:"친구", text:"엄마가 오늘 기분이 <mark class='hl'>좋으신 것 같아</mark>."},
+      {who:"na", speaker:"친구", text:"응. 내가 카네이션을 드렸어."},
+      {who:"ga", speaker:"친구", text:"아, 오늘이 어버이날이지?"},
+      {who:"na", speaker:"친구", text:"몰랐어? 오빠도 빨리 선물 사 와."}
+    ],
+    hint:"A/V-는 것 같다"
+  },
+  meaning:{
+    textbook:"명절이라서 길이 많이 막히<span class='target-word'>는 것 같아</span>.",
+    daily:"저는 오늘 컨디션이 안 좋<span class='target-word'>은 것 같아요</span>.",
+    summary:"'-는 것 같다'는 추측을 나타내는 표현이에요."
+  },
+  formTable:{
+    headers:["조건","형태","예시"],
+    rows:[
+      ["동사(현재), 받침 O/X 상관없음", "-는 것 같다", "막히다 → 막히<span class='red'>는 것 같다</span>"],
+      ["동사(완료)/형용사, 받침 O", "-은 것 같다", "먹다 → 먹<span class='red'>은 것 같다</span>"],
+      ["동사(완료)/형용사, 받침 X", "-ㄴ 것 같다", "가다 → 간<span class='red'> 것 같다</span>"]
+    ]
+  },
+  formPractice:[
+    {q:"막히다", a:"막히는 것 같다"},
+    {q:"먹다", a:"먹은 것 같다"},
+    {q:"가다", a:"간 것 같다"},
+    {q:"작다", a:"작은 것 같다"},
+    {q:"크다", a:"큰 것 같다"}
+  ],
+  sentenceExample:{
+    lines:["나나는 매일 우유를 마셔. 우유를 좋아하는 것 같아. (좋아하다)"]
+  },
+  sentencePractice:[
+    {q:"세인이 얼굴에 땀이 많이 나, 덥다", a:"세인이 얼굴에 땀이 많이 나. 더운 것 같아."},
+    {q:"소연이가 오늘 지각했어, 늦게 일어나다", a:"소연이가 오늘 지각했어. 아침에 늦게 일어난 것 같아."},
+    {q:"하늘이 흐려요, 비가 오다", a:"하늘이 흐려요. 비가 오는 것 같아요."},
+    {q:"아이가 시험지를 보고 웃어요, 시험을 잘 보다", a:"아이가 시험지를 보고 웃어요. 시험을 잘 본 것 같아요."},
+    {q:"이 가방이 무거워요, 책이 많다", a:"이 가방이 무거워요. 책이 많은 것 같아요."}
+  ],
+  warnings:[
+    "⚠️ 동사의 현재 추측은 '-는 것 같다', 이미 일어난 일이나 형용사는 받침에 따라 '-은/-ㄴ 것 같다'를 써요.",
+    "⚠️ 확실하지 않은 일을 조심스럽게 추측할 때 사용해요.",
+    "⚠️ 직접 보거나 들은 것을 근거로 추측할 때 자주 사용해요."
+  ],
+  compare:{
+    a:{title:"-네요 (감탄)", text:"직접 경험한 사실에 감탄할 때 써요. 예: 오늘 날씨가 좋네요."},
+    b:{title:"-는 것 같다 (추측)", text:"확실하지 않은 것을 조심스럽게 추측할 때 써요. 예: 오늘 비가 오는 것 같아요."}
+  }
+},
+{
+  id:2,
+  label:"③A/V-는데",
+  title:"A/V-는데",
+  scene:{
+    emoji:"🥮",
+    lines:[
+      {who:"ga", speaker:"친구", text:"작년 추석에 송편을 처음 <mark class='hl'>만들어 봤는데</mark> 재미있었어. 너희 집에서도 송편을 직접 만들어?"},
+      {who:"na", speaker:"친구", text:"아니. 우리 집은 추석에 송편을 마트에서 사."},
+      {who:"ga", speaker:"친구", text:"그래? 이번 추석에는 한번 직접 만들어 봐. 어렵지 않아."},
+      {who:"na", speaker:"친구", text:"그럴까? 한번 만들어 볼게."}
+    ],
+    hint:"A/V-는데"
+  },
+  meaning:{
+    textbook:"나는 농구를 좋아하<span class='target-word'>는데</span> 우리 형은 농구를 안 좋아해.",
+    daily:"저는 매운 음식을 좋아하<span class='target-word'>는데</span> 동생은 못 먹어요.",
+    summary:"'-는데'는 뒤의 말을 하기 위하여 그 대상과 관련이 있는 상황을 미리 말함을 나타내는 연결 어미예요."
+  },
+  formTable:{
+    headers:["조건","형태","예시"],
+    rows:[
+      ["동사, 받침 O/X 상관없음", "-는데", "좋아하다 → 좋아하<span class='red'>는데</span>"],
+      ["형용사, 받침 O", "-은데", "좋다 → 좋<span class='red'>은데</span>"],
+      ["형용사, 받침 X", "-ㄴ데", "크다 → 크<span class='red'>ㄴ데</span>"]
+    ]
+  },
+  formPractice:[
+    {q:"좋아하다", a:"좋아하는데"},
+    {q:"먹다", a:"먹는데"},
+    {q:"좋다", a:"좋은데"},
+    {q:"크다", a:"큰데"},
+    {q:"많다", a:"많은데"}
+  ],
+  sentenceExample:{
+    lines:["아까 비가 왔는데 지금은 안 와. (비가 오다)"]
+  },
+  sentencePractice:[
+    {q:"저는 영화를, 자주 보다, 연극은 잘 안 봐요", a:"저는 영화를 자주 보는데 연극은 잘 안 봐요."},
+    {q:"지난 주말에, 할아버지 댁에 가다, 할아버지께서 과자를 사 주셨어", a:"지난 주말에 할아버지 댁에 갔는데 할아버지께서 과자를 사 주셨어."},
+    {q:"저는 떡볶이를, 좋아하다, 동생은 안 좋아해요", a:"저는 떡볶이를 좋아하는데 동생은 안 좋아해요."},
+    {q:"이 옷이, 예쁘다, 좀 작아요", a:"이 옷이 예쁜데 좀 작아요."},
+    {q:"어제 눈이, 오다, 오늘은 날씨가 맑아요", a:"어제 눈이 왔는데 오늘은 날씨가 맑아요."}
+  ],
+  warnings:[
+    "⚠️ 동사는 '-는데', 형용사는 받침에 따라 '-은데/-ㄴ데'를 써요.",
+    "⚠️ 이미 일어난 일을 말할 때는 '-았/었는데'로 써요. (예: 비가 왔는데, 학교에 갔는데)",
+    "⚠️ 뒤에 반대되는 내용, 배경 설명, 질문 등 다양한 내용이 이어질 수 있어요."
+  ],
+  compare:{
+    a:{title:"-지만 (반대만)", text:"앞뒤 내용이 반대될 때만 사용해요. 예: 맵지만 맛있어요."},
+    b:{title:"-는데 (배경/반대 등)", text:"반대되는 내용뿐 아니라 배경 설명, 상황 제시 등 다양하게 사용해요. 예: 저는 떡볶이를 좋아하는데 동생은 안 좋아해요."}
+  }
+},
+{
+  id:3,
+  label:"④A/V-는지 알다/모르다",
+  title:"A/V-는지 알다/모르다",
+  scene:{
+    emoji:"🈴",
+    lines:[
+      {who:"ga", speaker:"선생님", text:"여러분, 한글을 누가 <mark class='hl'>만들었는지</mark> 알아요?"},
+      {who:"na", speaker:"학생", text:"세종대왕이에요."},
+      {who:"ga", speaker:"선생님", text:"맞았어요. 한글날은 바로 세종대왕이 한글을 만든 것을 기념하는 날이에요."},
+      {who:"na", speaker:"학생", text:"와, 한글날에 그런 의미가 <mark class='hl'>있는지</mark> 몰랐어요."}
+    ],
+    hint:"A/V-는지 알다/모르다"
+  },
+  meaning:{
+    textbook:"버스를 어디에서 갈아타<span class='target-word'>는지</span> 몰라요.",
+    daily:"저는 이 단어가 무슨 뜻인<span class='target-word'>지</span> 알아요.",
+    summary:"'-는지 알다/모르다'는 앞 문장의 사실에 대해 알거나 모름을 나타내는 표현이에요."
+  },
+  formTable:{
+    headers:["조건","형태","예시"],
+    rows:[
+      ["동사, 받침 O/X 상관없음", "-는지 알다/모르다", "닫다 → 닫<span class='red'>는지 알아요</span>"],
+      ["형용사/이다, 받침 O", "-은지 알다/모르다", "좋다 → 좋<span class='red'>은지 알아요</span>"],
+      ["형용사/이다, 받침 X", "-ㄴ지 알다/모르다", "크다 → 크<span class='red'>ㄴ지 알아요</span>"]
+    ]
+  },
+  formPractice:[
+    {q:"닫다", a:"닫는지 알아요"},
+    {q:"갈아타다", a:"갈아타는지 알아요"},
+    {q:"좋다", a:"좋은지 알아요"},
+    {q:"크다", a:"큰지 알아요"},
+    {q:"이기다", a:"이기는지 알아요"}
+  ],
+  sentenceExample:{
+    lines:["가: 언제 도서관이 문을 닫는지 알아? (언제 도서관이 문을 닫다)","나: 응. 언제 도서관이 문을 닫는지 알아. (알다)"]
+  },
+  sentencePractice:[
+    {q:"어디에서 자전거를 고치다, 모르다", a:"나: 아니. 어디에서 자전거를 고치는지 몰라."},
+    {q:"보통 누가 교실에 제일 먼저 오다, 알다", a:"나: 응. 보통 누가 교실에 제일 먼저 오는지 알아."},
+    {q:"이 단어가 무슨 뜻이다, 알다", a:"나: 응. 이 단어가 무슨 뜻인지 알아."},
+    {q:"방학이 언제 시작되다, 모르다", a:"나: 아니. 방학이 언제 시작되는지 몰라."},
+    {q:"어느 버스를 타야 하다, 알다", a:"나: 응. 어느 버스를 타야 하는지 알아."}
+  ],
+  warnings:[
+    "⚠️ 동사는 '-는지', 형용사·'이다'는 받침에 따라 '-은지/-ㄴ지'를 써요.",
+    "⚠️ 이미 일어난 일에 대해 물을 때는 '-았/었는지'로 써요. (예: 누가 만들었는지)",
+    "⚠️ 의문사(누구, 언제, 어디, 무엇 등)와 함께 자주 쓰여요."
+  ],
+  compare:{
+    a:{title:"-을 줄 알다/모르다 (방법을 앎)", text:"하는 방법을 아는지 말해요. 예: 자전거를 탈 줄 알아요."},
+    b:{title:"-는지 알다/모르다 (사실을 앎)", text:"어떤 사실이나 정보를 아는지 말해요. 예: 자전거가 어디에 있는지 알아요."}
+  }
+}
+];
+
+// 각 문법별 실제 사용할 단계 목록 (비교 문법 없으면 제외)
+grammars.forEach(g=>{
+  g.steps = g.compare ? [0,1,2,3,4,5,6] : [0,1,2,3,4,5];
+});
+
+let curG = 0;
+let curSIdx = 0; // index within g.steps
+
+const practiceState = {}; // key: g.id + "-form" or "-sent" -> array of revealed booleans
+
+function keyFor(gid,type){return gid+"-"+type;}
+
+function renderGrammarTabs(){
+  const wrap = document.getElementById('grammarTabs');
+  wrap.innerHTML = '';
+  grammars.forEach((g,i)=>{
+    const d = document.createElement('div');
+    d.className = 'grammar-tab' + (i===curG?' active':'');
+    d.textContent = g.label;
+    d.onclick = ()=>{ curG=i; curSIdx=0; renderAll(); };
+    wrap.appendChild(d);
+    if(i===curG){
+      requestAnimationFrame(()=> d.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}));
+    }
+  });
+}
+
+function renderStepTabs(){
+  const g = grammars[curG];
+  const wrap = document.getElementById('stepTabs');
+  wrap.innerHTML='';
+  g.steps.forEach((stepNum, idx)=>{
+    const d = document.createElement('div');
+    d.className = 'step-tab' + (idx===curSIdx?' active':'');
+    d.textContent = (idx+1)+'. '+STEP_NAMES[stepNum];
+    d.onclick = ()=>{ curSIdx = idx; renderAll(); };
+    wrap.appendChild(d);
+    if(idx===curSIdx){
+      requestAnimationFrame(()=> d.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}));
+    }
+  });
+}
+
+function bubbleHTML(line){
+  return `<div class="bubble-row ${line.who==='na'?'nana':''}">
+    <div class="bubble ${line.who}">
+      <div class="who">${line.speaker}</div>
+      <div>${line.text}</div>
+    </div>
+  </div>`;
+}
+
+function renderStepContent(){
+  const g = grammars[curG];
+  const stepNum = g.steps[curSIdx];
+  const el = document.getElementById('stepContent');
+  let html = '';
+
+  if(stepNum===0){
+    html += `<div class="step-title"><span class="num">1</span>상황 도입</div>`;
+    html += `<div class="scene"><div class="illust">${g.scene.emoji}</div></div>`;
+    html += `<div class="dialogue">`;
+    g.scene.lines.forEach(l=> html += bubbleHTML(l));
+    html += `</div>`;
+    html += `<div class="hint-box">💡 <span class="target-label">${g.scene.hint}</span>가 어디에 쓰였는지 찾아보세요!</div>`;
+  }
+  else if(stepNum===1){
+    html += `<div class="step-title"><span class="num">2</span>의미</div>`;
+    html += `<div class="meaning-boxes">
+      <div class="meaning-box"><span class="tag">교재 예문</span><p>${g.meaning.textbook}</p></div>
+      <div class="meaning-box"><span class="tag">일상 예문</span><p>${g.meaning.daily}</p></div>
+    </div>`;
+    html += `<div class="summary-line">✅ ${g.meaning.summary}</div>`;
+  }
+  else if(stepNum===2){
+    html += `<div class="step-title"><span class="num">3</span>형태</div>`;
+    html += `<div class="table-scroll"><table class="form-table"><thead><tr>`;
+    g.formTable.headers.forEach(h=> html+=`<th>${h}</th>`);
+    html += `</tr></thead><tbody>`;
+    g.formTable.rows.forEach(r=>{
+      html += `<tr><td>${r[0]}</td><td class="formcol">${r[1]}</td><td>${r[2]}</td></tr>`;
+    });
+    html += `</tbody></table></div>`;
+  }
+  else if(stepNum===3){
+    html += `<div class="step-title"><span class="num">4</span>형태 연습</div>`;
+    html += `<div class="hint-bar">💡 단어를 클릭하면 답이 나타나요.</div>`;
+    const k = keyFor(g.id,'form');
+    if(!practiceState[k]) practiceState[k] = g.formPractice.map(()=>false);
+    html += `<div class="practice-list">`;
+    g.formPractice.forEach((item,i)=>{
+      const revealed = practiceState[k][i];
+      html += `<div class="practice-item${revealed?' revealed':''}" data-type="form" data-idx="${i}">
+        <div class="q">(${i+1}) ${item.q}</div>
+        <button class="reveal-btn">${revealed ? item.a : '정답 보기'}</button>
+      </div>`;
+    });
+    html += `</div>`;
+    html += `<button class="reset-btn" data-reset="form">다시 풀기</button>`;
+  }
+  else if(stepNum===4){
+    html += `<div class="step-title"><span class="num">5</span>문장 연습</div>`;
+    html += `<div class="example-box"><span class="tag-label">보기</span><div class="lines">${g.sentenceExample.lines.map(l=>`<div>${l}</div>`).join('')}</div></div>`;
+    const k = keyFor(g.id,'sent');
+    if(!practiceState[k]) practiceState[k] = g.sentencePractice.map(()=>false);
+    html += `<div class="practice-list">`;
+    g.sentencePractice.forEach((item,i)=>{
+      const revealed = practiceState[k][i];
+      html += `<div class="practice-item${revealed?' revealed':''}" data-type="sent" data-idx="${i}">
+        <div class="q">(${i+1}) ${item.q}</div>
+        <button class="reveal-btn">${revealed ? item.a : '정답 보기'}</button>
+      </div>`;
+    });
+    html += `</div>`;
+    html += `<button class="reset-btn" data-reset="sent">다시 풀기</button>`;
+  }
+  else if(stepNum===5){
+    html += `<div class="step-title"><span class="num">6</span>사용 시 주의점</div>`;
+    html += `<ul class="warning-list">`;
+    g.warnings.forEach(w=> html += `<li>${w}</li>`);
+    html += `</ul>`;
+  }
+  else if(stepNum===6 && g.compare){
+    html += `<div class="step-title"><span class="num">7</span>비교 문법</div>`;
+    html += `<div class="compare-wrap">
+      <div class="compare-box a"><h4>${g.compare.a.title}</h4><p>${g.compare.a.text}</p></div>
+      <div class="compare-box b"><h4>${g.compare.b.title}</h4><p>${g.compare.b.text}</p></div>
+    </div>`;
+  }
+
+  el.innerHTML = html;
+
+  // 이벤트 바인딩
+  el.querySelectorAll('.practice-item').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const type = card.dataset.type;
+      const idx = parseInt(card.dataset.idx);
+      const k = keyFor(g.id, type);
+      practiceState[k][idx] = !practiceState[k][idx];
+      renderStepContent();
+    });
+  });
+  el.querySelectorAll('[data-reset]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const type = btn.dataset.reset;
+      const k = keyFor(g.id, type);
+      practiceState[k] = practiceState[k].map(()=>false);
+      renderStepContent();
+    });
+  });
+}
+
+function renderProgress(){
+  const g = grammars[curG];
+  document.getElementById('progress').textContent = `문법 ${curG+1} · ${curSIdx+1}/${g.steps.length}`;
+}
+
+function renderNav(){
+  const g = grammars[curG];
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const mid = document.getElementById('navMid');
+
+  const isFirstOfAll = (curG===0 && curSIdx===0);
+  const isLastOfAll = (curG===grammars.length-1 && curSIdx===g.steps.length-1);
+
+  prevBtn.disabled = isFirstOfAll;
+  nextBtn.disabled = isLastOfAll;
+
+  mid.textContent = `${g.title} · ${STEP_NAMES[g.steps[curSIdx]]}`;
+}
+
+document.getElementById('prevBtn').addEventListener('click', ()=>{
+  if(curSIdx>0){
+    curSIdx--;
+  } else if(curG>0){
+    curG--;
+    curSIdx = grammars[curG].steps.length-1;
+  }
+  renderAll();
+});
+
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  const g = grammars[curG];
+  if(curSIdx < g.steps.length-1){
+    curSIdx++;
+  } else if(curG < grammars.length-1){
+    curG++;
+    curSIdx = 0;
+  }
+  renderAll();
+});
+
+function renderAll(){
+  renderGrammarTabs();
+  renderStepTabs();
+  renderStepContent();
+  renderProgress();
+  renderNav();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+renderAll();
+</script>
+</body>
+</html>
